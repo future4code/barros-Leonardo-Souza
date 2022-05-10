@@ -21,16 +21,30 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  
-}
+    listaArray = array.sort((a , b) => a - b)
+    return listaArray
+    }
+
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-  
+  let numeroPar = []
+    for (const numero of array) {
+      if (numero % 2 === 0) {
+          numeroPar.push(numero)
+      }
+
+  }
+  return numeroPar
 }
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
+    for (const numero of array) {
+        if (numero % 2 === 0) {
+            return numero * numero
+        }
+    }
  
 }
 
