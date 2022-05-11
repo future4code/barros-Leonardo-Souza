@@ -72,9 +72,9 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
             maiorNumeroEntredois = num2
             menorNumero = num1
         }
+    
     let divisao = (maiorNumeroEntredois % menorNumero) === 0
     let resto = maiorNumeroEntredois - menorNumero  
-
     
     objetoDoisNum = {
         maiorNumero: maiorNumeroEntredois,
@@ -87,6 +87,15 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
+    let numerosPar = [0]
+    let soma = 0
+    let i = 0
+    while(i < n - 1) {
+        soma = soma +  2
+        numerosPar.push(soma)  
+        i++
+    }
+    return numerosPar
    
 }
 
