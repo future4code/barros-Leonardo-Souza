@@ -166,36 +166,54 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-    // somar propriedade compras
-    let soma = 0
-    let novoArray = []
+    let soma 
+    let somaArray = []
+    //iniciar com um for of loop para percorrer todo o array
     for (const conta of contas) {
+        //dentro do for loop inserir um metodo que some todos os valores de uma propriedade .reduce
+        soma = 0
+        soma = conta.compras.reduce((prevVal, currVal) => prevVal + currVal, 0)
+        //armazenar o valor da soma de cada index em um array de soma
+        somaArray.push(soma) 
+         // setar o valor da propriedade para 0
+         conta.compras = []      
+    }
+    //iniciar um for loop
+    for (let i = 0; i < contas.length; i++) {
+        //subtrair a propriedade saldo com o elemento do array soma do mesmo indice: saldo = saldo - soma[i]
+        const element = contas[i];
+        element.saldoTotal -= somaArray[i]
+        
+    }
+    return contas
 
-         novoObj = {
-            ...contas,
-            saldoTotal: novoSaldo,
-             compras: []
-        }
-        novoArray.push(novoObj)
-
-
-        }
-
-    
-    return novoArray
 }
-    //subtrair a soma ao valor do saldo
-
-    //retornar novo array com a propriedade atualizada com nada na propriedade compras
-
 
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    return consultas.sort( (a, b) => a.nome.localeCompare(b.nome))
+
 }
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
-}
+
+    soDatas = consultas.map((element, index, array) => {
+        return element.dataDaConsulta
+    })
+
+
+    function comparar (a, b) {
+        const data1 = new Date(a)
+        const data2 = new Date(b)
+    
+         return data1 - data2
+    }
+        
+    soDatas.sort(comparar)
+
+    return soDatas
+} 
+
+
