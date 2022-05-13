@@ -65,7 +65,7 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
     let maiorNumeroEntredois 
     let menorNumero 
         if (num1 > num2) {
-            maiorNumeroEntredois = num1
+            maiorNumeroEntredois = num1,
             menorNumero = num2
 
         } else {
@@ -73,15 +73,15 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
             menorNumero = num1
         }
     
-    let divisao = (maiorNumeroEntredois % menorNumero) === 0
+    let divisao = maiorNumeroEntredois % menorNumero === 0
     let resto = maiorNumeroEntredois - menorNumero  
     
-    objetoDoisNum = {
+    return objetoDoisNum = {
         maiorNumero: maiorNumeroEntredois,
         maiorDivisivelPorMenor: divisao,
         diferenca: resto
     }
-    return objetoDoisNum
+
 
 }
 
@@ -114,33 +114,81 @@ function classificaTriangulo(ladoA, ladoB, ladoC) {
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
+    //determinar o maior numero
+    listaArray = array.sort((a , b) => a - b)
+    segundoMaiorEMenor = [listaArray[listaArray.length-2], listaArray[1]]
+
+    return segundoMaiorEMenor
+
+             
+    }
+
   
-}
+
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
+    return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`  
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+   obJAnonimo = {
+   ... pessoa, 
+   nome:"ANÔNIMO"
+   }
+   return obJAnonimo
 }
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+   //ter no mibimo 1,5m
+   //ser mais velho que 14 anos
+   //mais novo que 60 anos
+   return pessoas.filter(pessoa => {
+       return (
+           pessoa.altura > 1.5 &&
+           pessoa.idade > 14 && pessoa.idade < 60
+
+       )
+   })
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
+    return pessoas.filter(pessoa => {
+        return (
+            pessoa.altura < 1.5 || pessoa.idade < 15 || pessoa.idade > 59 
+        )
+    })
   
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+    // somar propriedade compras
+    let soma = 0
+    let novoArray = []
+    for (const conta of contas) {
 
+         novoObj = {
+            ...contas,
+            saldoTotal: novoSaldo,
+             compras: []
+        }
+        novoArray.push(novoObj)
+
+
+        }
+
+    
+    return novoArray
 }
+    //subtrair a soma ao valor do saldo
+
+    //retornar novo array com a propriedade atualizada com nada na propriedade compras
+
+
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
