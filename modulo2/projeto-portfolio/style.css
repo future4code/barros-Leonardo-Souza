@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    }
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.header-container{
+    height: 80px;
+    background-color: #d1c1b6;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position:sticky;
+    top: 0;
+    width: 100%;
+
+}
+
+
+.menu {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 250px;
+
+}
+
+.menu a {
+    text-decoration: none;
+    color: #1e1e2a;
+    font-size: larger;
+    border-radius: 50px;
+
+}
+
+.menu a:hover {
+    background-color: #caaca0;
+    transition: 0.5s;
+    border: 1px solid #1e1e2a;
+    padding: 0.5rem 1rem;
+    border-radius: 50px; 
+}
+
+
+
+
+
+.home-container {
+    
+    text-align: center;
+    justify-content: center;
+    display:block;
+    padding: 0;
+}
+
+.nome {
+    height: 700px;
+    width: 500px;
+    float: left;
+    background-color: #caaca0;
+    justify-content: center;
+    align-items: center;
+}
+
+.nome h1 {
+    font-weight: bolder;
+    padding-bottom: 15px;
+    font-size: 40px;
+}
+
+.trace {
+    width: 100px;
+    height: 2px;
+    background-color: #1e1e2a;
+    border-radius: 4px;
+    margin-left: 200px;
+}
+
+.nome h4 {
+    padding-top: 15px;
+}
+
+.social-media {
+    margin-top: 5rem;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #1e1e2a;
+    padding: 1rem 4rem;
+    border: 1px solid #1e1e2a;
+    min-width: 4rem;
+    align-items: center;
+    justify-content: center;
+    left: 150px;
+    
+}
+
+.social-media a:hover {
+    background-color: #ca9682;
+    transition: 0.5s;
+    border-radius: 50px;
+    
+
+}
+
+/*  transition: 0.5s ease-in-out;     position: absolute ;  */
+
+.nome img {
+    height: 310px;
+    width: 400px;
+    object-fit: fill;
+    align-items: center;
+}
+
+
+
+.sobre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 700px;
+}
+
+.sobre h1 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-weight: 1000;
+    font-size: 45px;
+}
+
+.sobre p {
+    line-height:2em;
+    margin-inline: 150px;
+    font-size:large;
+}
+
+.container{
+    padding-bottom: 5rem;
+
+}
+
+
+.card{
+    padding-left: 3rem;
+
+
+}
+
+.card a {
+    height: 300px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #caaca0;
+    display: flex;
+    margin: 3rem 0 0 0;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+    color: #1e1e2a;
+}
+
+.card a:hover{
+    background-color: #ca9682;
+    transition: 0.5s ease-in-out;
+
+
+}
+
+.card-text {
+    padding-top: 10rem;
+    padding-left: 3rem;
+    margin: 3rem 0 0 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    letter-spacing: 1px;
+    
+}
+
+.card-2{
+    padding-right: 3rem;
+}
+
+.card-2 a {
+    height: 300px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #caaca0;
+    display: flex;
+    margin: 3rem 0 0 0;
+    cursor: pointer;
+    float: right;
+    text-decoration: none;
+    color: #1e1e2a;
+}
+
+.card-2 a:hover {
+    background-color: #ca9682;
+    transition: 0.5s;
+}
+
+.card-text-2 {
+    padding-top: 8rem;
+    padding-right: 1rem;
+    margin: 3rem 0 0 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    letter-spacing: 1px;
+    
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+    background-color:#d1c1b6;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    
+
+}
+
+.footer h5 {
+    position: relative;
+    margin: 1rem 1rem 1rem 1rem;
+    justify-content: top;
+}
+
+/* Fomulario */
+
+#formulario {
+    margin-right: 30%;
+    margin-left: 30%;
+    border: 2px solid #ca9682;
+    border-radius: 30px;
+    padding-left: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: #f1cdbf;
+}
+
+.field {
+    margin-bottom: 2rem;
+}
+
+.titulo-form{
+    padding-bottom: 1rem;
+}
+
+button {
+    padding: 5px;
+}
+
+
+
+
