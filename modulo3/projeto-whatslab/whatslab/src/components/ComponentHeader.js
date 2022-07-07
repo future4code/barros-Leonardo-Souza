@@ -7,7 +7,7 @@ export default function HeaderComponent() {
     return (
     <Header>
         <ImgLogo src = {logo}/>
-        <h1>LabZap</h1>
+        <h1>Whatslab</h1>
     </Header>
     )
  
