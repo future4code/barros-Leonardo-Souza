@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logo from './logo-labenu.jpg'
 
 export const Header = styled.div `
    display: flex;
@@ -35,6 +34,7 @@ export const GreenComponent = styled.div `
 export const MiddleWhiteComponent = styled.div `
    display: flex;
    align-items: flex-end;
+   flex-direction: column-reverse;
    height: 100%;
    width: 60%;
    background-color: #fff;
