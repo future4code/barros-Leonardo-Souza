@@ -44,7 +44,11 @@ function App() {
   console.log(arrayElementosPostConsole);
 
   function retornarExercicio(element) {
-    return <Post nomeUsuario={element.nome} fotoUsuario={element.fotoUsuario} fotoPost={element.fotoPost} />
+    return( <Post 
+      nomeUsuario={element.nome} 
+      fotoUsuario={element.fotoUsuario} 
+      fotoPost={element.fotoPost}
+      />)
   }
 
   const arrayElementos = posts.map(retornarExercicio)
