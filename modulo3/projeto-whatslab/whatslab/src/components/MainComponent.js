@@ -8,11 +8,13 @@ import {
 import { MainContainer } from "../style.js";
 
 export default function MainContent() {
+  // Define object that will hold the array of names and messages
   const [mensagens, setMensagens] = useState([{}]);
-
+  // Define variables to hold both inputs, name and message
   const [inputName, setInputName] = useState("");
   const [inputMessage, setInputMessage] = useState("");
 
+  // Manipulate previous variables with input values
   const handleInputName = (e) => {
     setInputName(e.target.value);
   };
@@ -20,7 +22,8 @@ export default function MainContent() {
   const handleInputMessage = (e) => {
     setInputMessage(e.target.value);
   };
-
+  
+  // When button is clicked, update the object properties with the new values.
   const enviarMensagem = (e) => {
     e.preventDefault();
     const novaMensagem = [
@@ -28,21 +31,24 @@ export default function MainContent() {
       { nome: inputName, message: inputMessage },
     ];
     setMensagens(novaMensagem);
+    // Reset inputs
     setInputName("");
     setInputMessage("");
-    setMensagens.reverse();
   };
-
+  
+  // Eliminate index 0 which is empty. 
   const retornarValorCheioCallback = (element, index, array) => {
     return index !== 0;
   };
+  
+  const retornarValorFinal = mensagens.filter(retornarValorCheioCallback);
 
-  const retornarValorCheio = mensagens.filter(retornarValorCheioCallback);
+  // Return the array in reverse order, so that the elements is correctly rendered
+  retornarValorFinal.reverse();
 
-  retornarValorCheio.reverse();
+  console.log(retornarValorFinal);
 
-  console.log(retornarValorCheio);
-
+  // Return the array of objects as html elements.
   function percorrerArrayCallback(element, index) {
     return (
       <MessageBox key={index}>
@@ -53,7 +59,7 @@ export default function MainContent() {
     );
   }
 
-  const percorrerArrayMap = retornarValorCheio.map(percorrerArrayCallback);
+  const percorrerArrayMap = retornarValorFinal.map(percorrerArrayCallback);
 
   return (
     <MainContainer>
