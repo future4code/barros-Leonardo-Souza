@@ -6,6 +6,7 @@ import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import { App } from "../../App";
 
 
 
@@ -60,10 +61,15 @@ function Post(props){
 
   return(
     <div className = 'PostContainer'>
+      <div className='HeaderContainer'>
       <div className = 'PostHeader'>
         <img className = 'UserPhoto' src={props.fotoUsuario} alt={'Imagem do usuario'}/>
         <p>{props.nomeUsuario}</p>
       </div>
+      <div>
+        <button>X</button>
+        </div>
+        </div>
 
       <img className = 'PostPhoto'src={props.fotoPost} alt={'Imagem do post'}/>
 
