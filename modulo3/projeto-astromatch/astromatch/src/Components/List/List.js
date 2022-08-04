@@ -1,25 +1,26 @@
 import React from "react";
+import { CardContainer } from "../Card/style";
 import { Lista } from "./style";
 
 export function List(props) {
   const { arrayMatches } = props;
   console.log(arrayMatches);
 
-  // const listMatches = arrayMatches.map((element) => {
-  //   return (
-  //     <li>
-  //       <img src={element.image} alt="" />
-  //       <p>{element.name}</p>
-  //     </li>
-  //   );
-  // });
+  const listMatches = arrayMatches.map((element) => {
+    return (
+      <li key={element.id}> 
+        <img src={element.photo} alt="" />
+        <p>{element.name}</p>
+      </li>
+    );
+  });
 
   return (
     <Lista>
-      <p>Teste</p>
       <main>
-        <ul></ul>
+        <ul>{listMatches}</ul>
       </main>
     </Lista>
+
   );
 }

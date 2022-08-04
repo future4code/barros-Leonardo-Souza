@@ -13,7 +13,11 @@ export const Lista = styled.div`
   main ul {
     display: flex;
     justify-content: left;
-    flex-direction: row;
+    flex-direction: column;
+    /* margin:0 auto; */
+    /* position: absolute;
+    top: 30%; 
+    left:40%;  */
   }
 
   main ul li {

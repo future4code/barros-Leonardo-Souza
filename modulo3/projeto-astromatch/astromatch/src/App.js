@@ -5,6 +5,7 @@ import Chat from "./Components/Chat/Chat";
 import { GlobalStyle } from "./GlobalStyle";
 import { List } from "./Components/List/List";
 import Teste from "./Components/Teste/Teste";
+import { CardContainer } from "./Components/Card/style";
 
 function App() {
   const [newPerson, setNewPerson] = useState({});
@@ -56,7 +57,8 @@ function App() {
         console.log(response.data.isMatch);
         if (response.data.isMatch === true) {
           alert("Its a match!!");
-          setMatches(newPerson);
+          const newMatch = [...matches, newPerson]
+          setMatches(newMatch);
           // console.log(response.data);
         }
       })
@@ -116,7 +118,7 @@ function App() {
       .catch((err) => {
         console.log(err.response);
       });
-  }, []);
+  }, [switchPages]);
 
   // switch pages
   const flipBooleans = () => {
@@ -143,9 +145,11 @@ function App() {
     return (
       <div className="App">
         <GlobalStyle />
+        <CardContainer>
         <Chat onClickReset={reset} onClickReturn={flipBooleans}>
-          <List arrayMatches={matches}/>
         </Chat>
+          <List arrayMatches={matches}/>
+          </CardContainer>
       </div>
     );
  }

@@ -4,7 +4,7 @@ import { CardContainer } from "../Card/style";
 
 function Chat(props) {
   return (
-    <CardContainer>
+    <div>
       <header>
         <button onClick={props.onClickReset}>Reset</button>
         <div className="title">
@@ -24,7 +24,7 @@ function Chat(props) {
             </ul>
         </main>
       </Lista> */}
-    </CardContainer>
+    </div>
   );
 }
 
