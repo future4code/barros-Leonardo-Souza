@@ -1,95 +1,154 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import  Card  from "./Components/Card/Card";
+import Card from "./Components/Card/Card";
+import Chat from "./Components/Chat/Chat";
 import { GlobalStyle } from "./GlobalStyle";
+import { List } from "./Components/List/List";
+import Teste from "./Components/Teste/Teste";
 
 function App() {
+  const [newPerson, setNewPerson] = useState({});
+  const [matches, setMatches] = useState([]);
+  const [switchPages, setSwitchPages] = useState(true);
 
-const [newPerson, setNewPerson] = useState({})
-const [matches, setMatches] = useState([])
-const [checkBoolean, setCheckBoolean] = useState(true)
-const[getId, setGetId] = useState("oi")
+  console.log(matches);
 
+  // console.log(newPerson);
 
+  useEffect(() => {
+    getRandomProfile();
+  }, []);
 
-console.log(newPerson);
+  // axios - get random unseen profile
 
-useEffect(() => {
-  getRandomProfile()
-}, []);
+  const getRandomProfile = () => {
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/person"
+      )
+      .then((response) => {
+        setNewPerson(response.data.profile);
+        // console.log(newPerson);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
 
+  // axios like button
 
-// axios - get random unseen profile
+  const getIdAndBooleanTrue = () => {
+    let id = newPerson.id;
+    console.log(id);
+    let boolean = true;
+    console.log(boolean);
 
-const getRandomProfile = () => {
+    axios
+      .post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/choose-person",
+        {
+          id: id,
+          choice: boolean,
+        }
+      )
+      .then((response) => {
+        getRandomProfile();
+        console.log(response.data.isMatch);
+        if (response.data.isMatch === true) {
+          alert("Its a match!!");
+          setMatches(newPerson);
+          // console.log(response.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
 
-  axios
-    .get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/person')
-    .then((response) => {
-      setNewPerson(response.data.profile)
-      console.log(newPerson);
-    })
-    .catch((err) => {
-      console.log(err.response);
-    })
+  // axios pass button
 
-}
+  const getIdAndBooleanfalse = () => {
+    let id = newPerson.id;
+    let boolean = false;
 
-const getIdAndBoolean = () => {
+    axios
+      .post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/choose-person",
+        {
+          id: id,
+          choice: boolean,
+        }
+      )
+      .then((response) => {
+        getRandomProfile();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
 
-  let id = newPerson.id;
-  console.log(id);
-  let boolean = true
-  console.log(boolean);
+  //axios reset
 
-  axios
-    .post('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/choose-person', 
-    {
-      'id': id,
-      'choice': boolean
-    })
-    .then((response) => {
-      getRandomProfile()
-      console.log(response.data.isMatch);
-      if (response.data.isMatch === true) {
-        alert('You match!!')
-        setMatches(newPerson)
-        console.log(response.data);
-      }
-    })
-    .catch((err) => {
-      console.log(err.response);
-    })
-}
+  const reset = () => {
+    axios
+      .put(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/clear"
+      )
+      .then((response) => {
+        alert("Success!");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
 
-// teste
+  // axios get matches
 
-//axios reset 
+  useEffect(() => {
+    axios
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/matches"
+      )
+      .then((response) => {
+        setMatches(response.data.matches);
+        console.log(matches);
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }, []);
 
-const reset = () => {
-  axios 
-    .put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/leonardo-souza-barros/clear')
-    .then((response) => {
-      alert('Success!')
-    })
-    .catch((err) => {
-      console.log(err.response);
-    })
+  // switch pages
+  const flipBooleans = () => {
+    setSwitchPages(!switchPages);
+  };
 
-}
-
-
-
-
-
-
-  return (
-    <div className="App">
-      <GlobalStyle/>
-        <Card url={newPerson.photo} onClickReset={reset} onClickLike={getIdAndBoolean} name={newPerson.name} age={newPerson.age} bio={newPerson.bio} ></Card>
-
-    </div>
-  );
+ if (switchPages === true) {
+    return (
+      <div className="App">
+        <GlobalStyle />
+        <Card
+          url={newPerson.photo}
+          onClickChat={flipBooleans}
+          onClickPass={getIdAndBooleanfalse}
+          onClickReset={reset}
+          onClickLike={getIdAndBooleanTrue}
+          name={newPerson.name}
+          age={newPerson.age}
+          bio={newPerson.bio}
+        ></Card>
+      </div>
+    );
+  } else {
+    return (
+      <div className="App">
+        <GlobalStyle />
+        <Chat onClickReset={reset} onClickReturn={flipBooleans}>
+          <List arrayMatches={matches}/>
+        </Chat>
+      </div>
+    );
+ }
 }
 
 export default App;

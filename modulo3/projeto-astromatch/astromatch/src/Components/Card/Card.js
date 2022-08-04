@@ -14,7 +14,7 @@ function Card (props) {
                 <h4>Astro</h4>
                 <h4>match</h4>
             </div>
-            <button>Chat</button>
+            <button onClick={props.onClickChat}>Chat</button>
         </header>
         <main id="main" style={{backgroundImage: `linear-gradient(to bottom, rgba(252, 245, 245, 0), rgba(0, 0, 0, 0.705)), url(${url})`}}>
             <div>
