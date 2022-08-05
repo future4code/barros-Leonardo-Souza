@@ -1,6 +1,5 @@
-import Card from "../Card/Card";
-import { CardContainer } from "../Card/style";
-// import { Lista } from "./syle";
+import React from "react";
+
 
 function Chat(props) {
   return (
@@ -13,17 +12,6 @@ function Chat(props) {
         </div>
         <button onClick={props.onClickReturn}>Return</button>
       </header>
-
-      {/* <Lista>
-        <main>
-            <ul>
-                <li>
-                    <img src={props.image} alt=""/>
-                    <p>{props.name}</p>
-                </li> 
-            </ul>
-        </main>
-      </Lista> */}
     </div>
   );
 }

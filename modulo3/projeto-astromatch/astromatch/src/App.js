@@ -4,7 +4,6 @@ import Card from "./Components/Card/Card";
 import Chat from "./Components/Chat/Chat";
 import { GlobalStyle } from "./GlobalStyle";
 import { List } from "./Components/List/List";
-import Teste from "./Components/Teste/Teste";
 import { CardContainer } from "./Components/Card/style";
 
 function App() {
@@ -16,9 +15,11 @@ function App() {
 
   // console.log(newPerson);
 
+
   useEffect(() => {
     getRandomProfile();
   }, []);
+
 
   // axios - get random unseen profile
 
@@ -29,6 +30,7 @@ function App() {
       )
       .then((response) => {
         setNewPerson(response.data.profile);
+        
         // console.log(newPerson);
       })
       .catch((err) => {
@@ -138,14 +140,16 @@ function App() {
           name={newPerson.name}
           age={newPerson.age}
           bio={newPerson.bio}
+          switchPages={switchPages}
         ></Card>
       </div>
     );
   } else {
     return (
       <div className="App">
-        <GlobalStyle />
-        <CardContainer>
+        <GlobalStyle/>
+        <CardContainer style={{overflow:'scroll'
+      }}>
         <Chat onClickReset={reset} onClickReturn={flipBooleans}>
         </Chat>
           <List arrayMatches={matches}/>

@@ -3,6 +3,8 @@ import { CardContainer } from "./style";
 
 function Card (props) {
 
+    const { switchPages } = props;
+    console.log(switchPages);
 
     let url = props.url
 

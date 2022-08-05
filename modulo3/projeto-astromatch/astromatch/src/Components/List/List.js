@@ -1,5 +1,4 @@
 import React from "react";
-import { CardContainer } from "../Card/style";
 import { Lista } from "./style";
 
 export function List(props) {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  width: 380px;
+  width: 400px;
   margin: 0 auto;
   height: 600px;
   margin-top: 100px;
@@ -10,6 +10,11 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 500px) {
+    
+  height: 100vh;
+}
 
   header {
     background-color: white;
@@ -23,6 +28,7 @@ export const CardContainer = styled.div`
   .title {
     display: flex;
     font-size: 24px;
+    font-weight:400;
     
   }
   
@@ -34,7 +40,6 @@ export const CardContainer = styled.div`
 
   header button {
     padding: 5px 20px;
-    /* margin: 0px 20px 0px 20px; */
     color: white;
     background: var(--red);
     font-weight: 500;
@@ -61,10 +66,6 @@ export const CardContainer = styled.div`
     height: 500px;
     width: 360px;
     box-shadow: 5px 5px 5px darkgray;
-    overflow: hidden;
-    background-image:
-    linear-gradient(to bottom, rgba(252, 245, 245, 0), rgba(0, 0, 0, 0.705));
-    /* url('images/wall-e.jpg'); */
     object-fit: cover;
     background-size: cover;
     display: flex;
@@ -123,6 +124,8 @@ footer button:nth-child(1)
 footer button:nth-child(2) {
     font-weight: 700;
 }
+
+
 
 
 `;
