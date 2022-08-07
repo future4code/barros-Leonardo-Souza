@@ -5,6 +5,7 @@ import Chat from "./Components/Chat/Chat";
 import { GlobalStyle } from "./GlobalStyle";
 import { List } from "./Components/List/List";
 import { CardContainer } from "./Components/Card/style";
+import { Refresh } from "./Components/Refresh/Refresh";
 
 function App() {
   const [newPerson, setNewPerson] = useState({});
@@ -100,6 +101,7 @@ function App() {
       )
       .then((response) => {
         alert("Success!");
+        getRandomProfile();
       })
       .catch((err) => {
         console.log(err.response);
@@ -128,6 +130,7 @@ function App() {
   };
 
  if (switchPages === true) {
+  if (newPerson) {
     return (
       <div className="App">
         <GlobalStyle />
@@ -147,16 +150,31 @@ function App() {
   } else {
     return (
       <div className="App">
-        <GlobalStyle/>
-        <CardContainer style={{overflow:'scroll'
-      }}>
-        <Chat onClickReset={reset} onClickReturn={flipBooleans}>
-        </Chat>
-          <List arrayMatches={matches}/>
-          </CardContainer>
+      <GlobalStyle/>
+      <CardContainer>
+        <chat>
+        <Refresh onClickRefresh={reset}></Refresh>
+        </chat>
+
+      </CardContainer>
       </div>
-    );
+      )
+  }
+  } else {
+
+      return (
+        <div className="App">
+          <GlobalStyle/>
+          <CardContainer style={{overflow:'scroll'
+        }}>
+          <Chat onClickReset={reset} onClickReturn={flipBooleans}>
+          </Chat>
+            <List arrayMatches={matches}/>
+            </CardContainer>
+        </div>
+      );
+    }
  }
-}
+
 
 export default App;
