@@ -1,27 +1,57 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants/constants";
+import useRequestData from "../../hook/useRequestData";
+import Card from "../Card/Card";
+import { TripsContainer } from "./style";
 
 function TripsList() {
-    
-    const navigate = useNavigate()
+  const [data, isLoading, error] = useRequestData(
+    `${BASE_URL}leonardo-souza-barros/trips`
+  );
 
-    const goBack = () => {
-        navigate(-1)
-    }
+  console.log(data);
 
-    const subscribe = () => {
-        navigate('/subscribe')
-    }
+  const cardList =
+    data &&
+    data.map((element) => {
+      return (
+        <Card
+          name={element.name}
+          planet={element.planet}
+          description={element.description}
+          date={element.date}
+          days={element.durationInDays}
+        />
+      );
+    });
 
-    return (
-        <>
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const subscribe = () => {
+    navigate("/subscribe");
+  };
+
+  return (
+    <TripsContainer>
+      <div className="container">
         <div>
-            <button onClick={goBack}>Voltar</button>
-            <button onClick={subscribe}>Increver-se</button>
-        </div>
+          <button onClick={goBack}>Voltar</button>
+          <button onClick={subscribe}>Increver-se</button>
         <h1>Viagens</h1>
-        </>
-    )
+        </div>
+        <div className="card-wrapper">
+          {isLoading && "Carregando..."}
+          {!isLoading && data && cardList}
+          {!isLoading && !data && error}
+        </div>
+      </div>
+    </TripsContainer>
+  );
 }
 
 export default TripsList;

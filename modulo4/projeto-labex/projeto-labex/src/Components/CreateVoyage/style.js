@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const ApplicationDiv = styled.div `
+export const CreateVoyageContainer = styled.div `
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -9,10 +9,12 @@ export const ApplicationDiv = styled.div `
 
     h1 {
         color: #5f5f5f;
+        align-self: center;
     }
 
     div {
         margin: auto;
+        width: 30%;
     }
 
     form { 
@@ -37,16 +39,17 @@ export const ApplicationDiv = styled.div `
     .button-div {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
     .button-div button {
         border: none;
-        padding: 15px 60px;
+        padding: 15px 40px;
         border-radius: 10px;
         background-color: #5f5f5f;
         color: white;
         font-size: 20px;
         cursor: pointer;
+        margin: 0px 40px;
     }
 `
