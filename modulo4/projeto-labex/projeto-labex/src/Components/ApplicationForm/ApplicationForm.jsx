@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../constants/constants";
+import useRequestData from "../../hook/useRequestData";
 import { ApplicationDiv } from "./style";
 
 function ApplicationForm() {
@@ -7,10 +9,20 @@ function ApplicationForm() {
   const [age, setAge] = useState("");
   const [application, setApplication] = useState("");
   const [occupation, setOccupation] = useState("");
-  const[country, setCountry] = useState("");
+  const [country, setCountry] = useState("");
 
   console.log(country);
 
+  //get name and id of the trips
+
+  const [data] = useRequestData(`${BASE_URL}leonardo-souza-barros/trips`);
+
+  const listTripnames =
+    data &&
+    data.trips &&
+    data.trips.map((element) => {
+      return <option key={element.id}>{element.name}</option>;
+    });
   // navigate through pages
 
   const navigate = useNavigate();
@@ -38,7 +50,7 @@ function ApplicationForm() {
 
   const handleInputCountry = (e) => {
     setCountry(e.target.value);
-  }
+  };
 
   return (
     <ApplicationDiv>
@@ -46,8 +58,9 @@ function ApplicationForm() {
         <h1>Inscreva-se para uma viagem</h1>
         <form action="">
           <select name="" id="">
-            <option value="">Teste</option>
-            <option value="">Teste2</option>
+            {/* <option value="">Teste</option>
+            <option value="">Teste2</option> */}
+            {listTripnames}
           </select>
           <input
             type="text"
@@ -73,7 +86,13 @@ function ApplicationForm() {
             value={occupation}
             onChange={handleInputOccupation}
           />
-          <select name="" id="" value={country} onChange={handleInputCountry} required>
+          <select
+            name=""
+            id=""
+            value={country}
+            onChange={handleInputCountry}
+            required
+          >
             <option value="">Selecione um país</option>
             <option value="África do Sul">África do Sul</option>
             <option value="Albânia">Albânia</option>

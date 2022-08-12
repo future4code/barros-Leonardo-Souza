@@ -14,7 +14,8 @@ function TripsList() {
 
   const cardList =
     data &&
-    data.map((element) => {
+    data.trips &&
+    data.trips.map((element) => {
       return (
         <Card
           name={element.name}
