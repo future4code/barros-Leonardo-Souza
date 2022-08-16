@@ -3,94 +3,121 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/constants";
 import useRequestData from "../../hook/useRequestData";
 import { ApplicationDiv } from "./style";
+import axios from "axios";
+import { useForm } from "../../hook/useForm";
 
 function ApplicationForm() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [application, setApplication] = useState("");
-  const [occupation, setOccupation] = useState("");
-  const [country, setCountry] = useState("");
+  const [selectedId, setSelectedId] =useState("")
 
-  console.log(country);
+  const [ form, onChange ] = useForm({
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: ""
+})
+
+  console.log(form);
 
   //get name and id of the trips
 
   const [data] = useRequestData(`${BASE_URL}leonardo-souza-barros/trips`);
 
+  // post apply to trips 
+
+  const applyToTrip = (e) => {
+    e.preventDefault()
+    axios 
+      .post (
+        `${BASE_URL}leonardo-souza-barros/trips/${selectedId}/apply`,
+        {
+          "name": form.name,
+          "age": form.age,
+          "applicationText": form.applicationText,
+          "profession": form.profession,
+          "country": form.country
+        }
+        )
+      .then((response)=> {
+        alert("Usuário adicionado com sucesso")
+      })  
+      .catch((err) => {
+        alert("Ops... Algo deu errado. Tente novamente mais tarde")
+        console.log(err.response);
+      })
+  }
+
   const listTripnames =
     data &&
     data.trips &&
     data.trips.map((element) => {
-      return <option key={element.id}>{element.name}</option>;
+      return <option key={element.id}name={element.name} value={element.id}>{element.name}</option>;
     });
+
   // navigate through pages
 
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate("/trips");
   };
 
   // handle inputs
 
-  const handleInputName = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleInputAge = (e) => {
-    setAge(e.target.value);
-  };
-
-  const handleInputApplication = (e) => {
-    setApplication(e.target.value);
-  };
-  const handleInputOccupation = (e) => {
-    setOccupation(e.target.value);
-  };
-
-  const handleInputCountry = (e) => {
-    setCountry(e.target.value);
-  };
+  const handleInputSelectedId = (e) => {
+    setSelectedId(e.target.value)
+  }
+  console.log(selectedId);
 
   return (
     <ApplicationDiv>
       <div>
         <h1>Inscreva-se para uma viagem</h1>
-        <form action="">
-          <select name="" id="">
-            {/* <option value="">Teste</option>
-            <option value="">Teste2</option> */}
+        <form action="" onSubmit={applyToTrip}>
+          <select name="" id="key" value={selectedId} onChange={handleInputSelectedId}>
             {listTripnames}
           </select>
           <input
+            id="name"
+            name="name"
             type="text"
             placeholder="Nome"
-            value={name}
-            onChange={handleInputName}
+            value={form.name}
+            onChange={onChange}
+            required
           />
           <input
+            id="age"
+            name="age"          
             type="number"
             placeholder="Idade"
-            value={age}
-            onChange={handleInputAge}
+            value={form.age}
+            onChange={onChange}
+            required
           />
           <input
+            id="applicationText"
+            name="applicationText"         
             type="text"
             placeholder="Texto de Candidatura"
-            value={application}
-            onChange={handleInputApplication}
+            value={form.application}
+            onChange={onChange}
+            required
           />
           <input
+            id="profession"
+            name="profession"          
             type="text"
             placeholder="Profissão"
-            value={occupation}
-            onChange={handleInputOccupation}
+            value={form.occupation}
+            onChange={onChange}
+            required
           />
           <select
-            name=""
-            id=""
-            value={country}
-            onChange={handleInputCountry}
+            id="country"
+            name="country"
+            value={form.country}
+            onChange={onChange}
             required
           >
             <option value="">Selecione um país</option>
@@ -273,11 +300,11 @@ function ApplicationForm() {
             <option value="Zâmbia">Zâmbia</option>
             <option value="Zimbábue">Zimbábue</option>
           </select>
-        </form>
         <div className="button-div">
           <button onClick={goBack}>Voltar</button>
-          <button>Enviar</button>
+          <button onClick={applyToTrip}>Enviar</button>
         </div>
+        </form>
       </div>
     </ApplicationDiv>
   );

@@ -34,13 +34,15 @@ export const ApplicationDiv = styled.div `
         margin: 15px 0px;
     }
 
-    .button-div {
+    form .button-div {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
     }
 
     .button-div button {
+        margin-right:25px;
+        margin-left: 25px;
         border: none;
         padding: 15px 60px;
         border-radius: 10px;
