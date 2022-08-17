@@ -14,6 +14,23 @@ function CreateVoyage() {
     description: "",
     durationInDays: "",
   });
+  console.log(form);
+
+  const date = new Date()
+  const currentDate = date.toLocaleDateString()
+  console.log(date.toLocaleDateString());
+
+  //tratar data 
+  function formatDate(date) {
+    let day = date.split("/")[0];
+    let month = date.split("/")[1];
+    let year = date.split("/")[2];
+
+    return year + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2)
+    
+  }
+
+  console.log(formatDate(currentDate));
 
   const myHeaders = {
     headers: {
@@ -85,10 +102,13 @@ function CreateVoyage() {
           </select>
           <input
             type="date"
+            min={formatDate(currentDate)}
             id="date"
             name="date"
             value={form.date}
             onChange={onChange}
+            // pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$"
+            // pattern= "min={date}"
           />
           <input
             type="text"

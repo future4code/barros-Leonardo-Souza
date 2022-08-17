@@ -85,15 +85,18 @@ function ApplicationForm() {
             value={form.name}
             onChange={onChange}
             required
+            pattern="[a-z\s]+$"
           />
           <input
             id="age"
             name="age"          
             type="number"
             placeholder="Idade"
+            min={18}
             value={form.age}
             onChange={onChange}
             required
+            pattern="[0-9]+$"
           />
           <input
             id="applicationText"
