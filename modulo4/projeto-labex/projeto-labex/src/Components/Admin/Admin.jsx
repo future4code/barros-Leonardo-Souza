@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hook/useProtectedPage";
 import { AdminContainer } from "./style";
 import useRequestData from "../../hook/useRequestData";
-import { BASE_URL } from "../../constants/constants";
+import { BASE_URL, myHeaders } from "../../constants/constants";
 import { AdminList } from "../AdminList/AdminList";
+import axios from "axios";
+
 
 function Admin() {
   const navigate = useNavigate();
+  const [ selectedTrip, setSelectedTrip ] = useState({})
 
   useProtectedPage();
 
@@ -17,16 +20,38 @@ function Admin() {
 
   console.log(data);
 
-    const tripList =
-      data &&
-      data.trips &&
-      data.trips.map((element) => {
-        return (
-          <AdminList
-            name={element.name}
-          />
-        );
-      });
+  
+  // const goToTripDetail = (id) => {
+  //   axios 
+  //   .get(`${BASE_URL}leonardo-souza-barros/trip/${id}`, myHeaders)
+  //   .then((response) => {
+  //     alert("Sucesso")
+  //     setSelectedTrip(response.data.trip)
+  //     console.log(selectedTrip);
+  //     goToDetails()
+  //   })
+  //   .catch((err) => {
+  //     alert("Ops... algo deu errado")
+  //   })
+  // }
+
+  const goToTripDetail = (id) => {
+    navigate(`/login/admin/details/${id}`)
+  }
+  
+
+  const tripList =
+    data &&
+    data.trips &&
+    data.trips.map((element) => {
+      return (
+        <AdminList
+          value={element.id}
+          name={element.name}
+          onClickDetails={() => goToTripDetail(element.id)}
+        />
+      );
+    });
 
   const goBack = () => {
     navigate("/");
@@ -41,6 +66,7 @@ function Admin() {
   };
 
   const goToLogin = () => {
+    localStorage.clear()
     navigate("/login");
   };
 
@@ -57,10 +83,9 @@ function Admin() {
           </div>
         </div>
       </AdminContainer>
-        {isLoading && "Carregando..."}
-        {!isLoading && data && tripList}
-        {!isLoading && !data && error}
-
+      {isLoading && "Carregando..."}
+      {!isLoading && data && tripList}
+      {!isLoading && !data && error}
     </>
   );
 }

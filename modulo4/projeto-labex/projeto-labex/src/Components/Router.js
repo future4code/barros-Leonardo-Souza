@@ -24,7 +24,7 @@ function Router() {
 
                 <Route path = "/login/admin/create-voyage" element = { <CreateVoyage/> } />
 
-                <Route path = "/login/admin/details" element = { <Details/> } />
+                <Route path = "/login/admin/details/:id" element = { <Details/> } />
 
 
 

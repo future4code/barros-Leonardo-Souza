@@ -8,6 +8,7 @@ export const AdminListContainer = styled.div`
   box-shadow: 5px 5px 5px gray;
   margin-top: 30px;
 
+
   .button {
     padding: 0 30px;
     width: 100%;
@@ -18,6 +19,7 @@ export const AdminListContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    font-family: "Poppins";
   }
 
   button {
