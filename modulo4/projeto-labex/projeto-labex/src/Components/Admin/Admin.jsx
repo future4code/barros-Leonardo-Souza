@@ -1,9 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useProtectedPage } from "../../hook/useProtectedPage";
 import { AdminContainer } from "./style";
+import useRequestData from "../../hook/useRequestData";
+import { BASE_URL } from "../../constants/constants";
 
 function Admin() {
   const navigate = useNavigate();
+
+  useProtectedPage();
+
+  const [data, isLoading, error] = useRequestData(
+    `${BASE_URL}leonardo-souza-barros/trips`
+  );
 
   const goBack = () => {
     navigate("/");

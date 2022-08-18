@@ -18,10 +18,11 @@ export const AdminContainer = styled.div `
     div {
         display: flex;
         align-items: center;
-        flex-direction: column;
+        flex-direction: row;
     }
 
     div button {
+        margin: 0 30px;
         margin-bottom: 50px;
         border: none;
         width: 200px;

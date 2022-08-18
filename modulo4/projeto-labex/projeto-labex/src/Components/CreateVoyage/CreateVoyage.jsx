@@ -3,10 +3,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/constants";
 import { useForm } from "../../hook/useForm";
+import { useProtectedPage } from "../../hook/useProtectedPage";
 import { CreateVoyageContainer } from "./style";
 
 function CreateVoyage() {
   const navigate = useNavigate();
+  useProtectedPage()
   const [form, onChange] = useForm({
     name: "",
     planet: "",

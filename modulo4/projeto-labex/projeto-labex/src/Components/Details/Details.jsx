@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useProtectedPage } from "../../hook/useProtectedPage";
 import { DetailContainer } from "./style";
 
 function Details() {
   const navigate = useNavigate();
+
+  useProtectedPage()
 
   const goBack = () => {
     navigate(-1);

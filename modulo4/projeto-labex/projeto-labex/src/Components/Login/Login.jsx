@@ -16,13 +16,13 @@ function Login() {
     .then((response) => {
       alert("Usuário logado com sucesso!")
       console.log(response.data);
+      localStorage.setItem("token", response.data.token)
       goAdminArea()
     })
     .catch((err) => {
       alert("Usuário inválido")
       console.log(err.response);
     })
-    // console.log(body);
   };
 
   const goBack = () => {
