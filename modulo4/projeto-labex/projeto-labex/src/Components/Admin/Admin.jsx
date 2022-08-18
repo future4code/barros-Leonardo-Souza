@@ -4,6 +4,7 @@ import { useProtectedPage } from "../../hook/useProtectedPage";
 import { AdminContainer } from "./style";
 import useRequestData from "../../hook/useRequestData";
 import { BASE_URL } from "../../constants/constants";
+import { AdminList } from "../AdminList/AdminList";
 
 function Admin() {
   const navigate = useNavigate();
@@ -13,6 +14,19 @@ function Admin() {
   const [data, isLoading, error] = useRequestData(
     `${BASE_URL}leonardo-souza-barros/trips`
   );
+
+  console.log(data);
+
+    const tripList =
+      data &&
+      data.trips &&
+      data.trips.map((element) => {
+        return (
+          <AdminList
+            name={element.name}
+          />
+        );
+      });
 
   const goBack = () => {
     navigate("/");
@@ -31,17 +45,23 @@ function Admin() {
   };
 
   return (
-    <AdminContainer>
-      <div className="wrapper">
-        <h1>Painel Administrativo</h1>
-        <div>
-          <button onClick={goBack}>Voltar</button>
-          <button onClick={goToCreateVoyage}>Criar viagem</button>
-          <button onClick={goToLogin}>Logout</button>
-          <button onClick={goToDetails}>Detalhes</button>
+    <>
+      <AdminContainer>
+        <div className="wrapper">
+          <h1>Painel Administrativo</h1>
+          <div>
+            <button onClick={goBack}>Voltar</button>
+            <button onClick={goToCreateVoyage}>Criar viagem</button>
+            <button onClick={goToLogin}>Logout</button>
+            <button onClick={goToDetails}>Detalhes</button>
+          </div>
         </div>
-      </div>
-    </AdminContainer>
+      </AdminContainer>
+        {isLoading && "Carregando..."}
+        {!isLoading && data && tripList}
+        {!isLoading && !data && error}
+
+    </>
   );
 }
 
