@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hook/useProtectedPage";
 import { AdminContainer } from "./style";
@@ -10,33 +10,37 @@ import axios from "axios";
 
 function Admin() {
   const navigate = useNavigate();
-  const [ selectedTrip, setSelectedTrip ] = useState({})
+
 
   useProtectedPage();
+  useEffect(()=>{
 
-  const [data, isLoading, error] = useRequestData(
+  })
+  const [data, isLoading, error, booleanState, setBooleanState] = useRequestData(
     `${BASE_URL}leonardo-souza-barros/trips`
   );
 
   console.log(data);
 
-  
-  // const goToTripDetail = (id) => {
-  //   axios 
-  //   .get(`${BASE_URL}leonardo-souza-barros/trip/${id}`, myHeaders)
-  //   .then((response) => {
-  //     alert("Sucesso")
-  //     setSelectedTrip(response.data.trip)
-  //     console.log(selectedTrip);
-  //     goToDetails()
-  //   })
-  //   .catch((err) => {
-  //     alert("Ops... algo deu errado")
-  //   })
-  // }
 
   const goToTripDetail = (id) => {
     navigate(`/login/admin/details/${id}`)
+  }
+
+  const deleteTrip = (id) => {
+    const confirm = window.confirm (`Tem certeza que quer apagar essa viagem?`)
+    if (confirm) {
+      axios
+      .delete(`${BASE_URL}leonardo-souza-barros/trips/${id}`, myHeaders)
+      .then((response) => {
+        setBooleanState(!booleanState)
+        alert("Viagem deletada com sucesso")
+      })
+      .catch((err) => {
+        alert("Ops... Algo deu errado :/")
+      })
+      
+    }
   }
   
 
@@ -49,6 +53,7 @@ function Admin() {
           value={element.id}
           name={element.name}
           onClickDetails={() => goToTripDetail(element.id)}
+          onClickDelete={() => deleteTrip(element.id)}
         />
       );
     });
@@ -79,13 +84,13 @@ function Admin() {
             <button onClick={goBack}>Voltar</button>
             <button onClick={goToCreateVoyage}>Criar viagem</button>
             <button onClick={goToLogin}>Logout</button>
-            <button onClick={goToDetails}>Detalhes</button>
           </div>
         </div>
       </AdminContainer>
-      {isLoading && "Carregando..."}
-      {!isLoading && data && tripList}
-      {!isLoading && !data && error}
+        {isLoading && "Carregando..."}
+        {!isLoading && data && tripList}
+        {!isLoading && !data && error}
+
     </>
   );
 }

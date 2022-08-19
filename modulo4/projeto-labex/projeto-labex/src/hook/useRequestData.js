@@ -5,6 +5,7 @@ const useRequestData = (url) => {
     const [data, setData] = useState(undefined);
     const [isLoading, setIsLoading] = useState(undefined);
     const [error, setError] = useState(undefined);
+    const [ booleanState, setBooleanState] = useState(false);
   
     useEffect(() => {
       setIsLoading(true);
@@ -19,9 +20,9 @@ const useRequestData = (url) => {
           setError(err)
           console.log(error);
         });
-    }, []);
+    }, [booleanState]);
   
-    return [data, isLoading, error];
+    return [data, isLoading, error, booleanState, setBooleanState];
   };
   
   export default useRequestData;
