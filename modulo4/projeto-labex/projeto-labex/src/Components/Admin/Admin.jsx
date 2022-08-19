@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../hook/useProtectedPage";
-import { AdminContainer } from "./style";
+import { AdminContainer, TripContainer } from "./style";
 import useRequestData from "../../hook/useRequestData";
 import { BASE_URL, myHeaders } from "../../constants/constants";
 import { AdminList } from "../AdminList/AdminList";
@@ -87,10 +87,11 @@ function Admin() {
           </div>
         </div>
       </AdminContainer>
+      <TripContainer>
         {isLoading && "Carregando..."}
         {!isLoading && data && tripList}
         {!isLoading && !data && error}
-
+      </TripContainer>
     </>
   );
 }

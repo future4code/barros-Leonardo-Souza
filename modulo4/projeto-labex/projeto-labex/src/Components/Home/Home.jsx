@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeDiv } from "./style";
 
+
+
 function Home() {
   const navigate = useNavigate();
+  const [ token, setToken ] = useState("")
+
+  // useEffect(() => {
+  //     const token = localStorage.getItem('token');
+  //     if (token) {
+  //       setToken(token);
+  //       };
+  //     }
+  // }[])
 
   const goToTripsList = () => {
     navigate("/trips");

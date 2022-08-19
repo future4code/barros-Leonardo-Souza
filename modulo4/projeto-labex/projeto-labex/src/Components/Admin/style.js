@@ -34,3 +34,10 @@ export const AdminContainer = styled.div `
         cursor: pointer;
     }
 `
+
+export const TripContainer = styled.div `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+`

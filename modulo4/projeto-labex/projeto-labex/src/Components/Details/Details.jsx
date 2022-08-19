@@ -5,12 +5,14 @@ import Card from "../Card/Card";
 import { DetailContainer } from "./style";
 import { BASE_URL, myHeaders } from "../../constants/constants";
 import axios from "axios";
+import { CandidatesCard } from "../CandidatesCard/CandidatesCard";
 
 function Details() {
   const [ tripDetail, setTripDetail ] = useState({})
+  const [ candidate, setCandidate ] = useState([])
   const navigate = useNavigate();
   const params = useParams() 
-
+console.log(candidate);
   useProtectedPage();
 
   const goBack = () => {
@@ -20,6 +22,8 @@ function Details() {
   useEffect(() => {
     getTripDetail()
   },[])
+
+
 
   const getTripDetail = () => {
     axios
@@ -33,22 +37,91 @@ function Details() {
     })
   }
 
-  return (
-    <DetailContainer>
-      <div className="wrapper">
-        <h1>Detalhes</h1>
-        <div>
-          <button onClick={goBack}>Voltar</button>
-        </div>
-      </div>
-      <Card
-        name={tripDetail.name}
-        planet={tripDetail.planet}
-        description={tripDetail.description}
-        date={tripDetail.date}
-        days={tripDetail.durationInDays}
+  console.log(tripDetail);
+
+  // decide candidate 
+
+  const approve = (id, name) => { 
+    const body = {
+      approve: true,
+    };
+    axios 
+    .put(`${BASE_URL}leonardo-souza-barros/trips/${params.id}/candidates/${id}/decide`, body, myHeaders)
+    .then((response) => {
+      alert("usuário aprovado")
+      localStorage.setItem("name", name);
+    })
+    .catch((err) => {
+      alert("Ops... Algo deu errado :/")
+    })
+  }
+
+    const reprove = (id) => {
+      const body = {
+        approve: false,
+      };
+      axios
+        .put(
+          `${BASE_URL}leonardo-souza-barros/trips/${params.id}/candidates/${id}/decide`,
+          body,
+          myHeaders
+        )
+        .then((response) => {
+          alert("usuário reprovado");
+        })
+        .catch((err) => {
+          alert("Ops... Algo deu errado :/");
+        });
+    };
+
+  // setCandidate(localStorage.getItem("name"))
+
+  const mappedCandidates = tripDetail.candidates && tripDetail.candidates.map((element) => {
+    return (
+      <CandidatesCard
+        name={element.name}
+        occupation={element.profession}
+        age={element.age}
+        country={element.country}
+        applicationText={element.applicationText}
+        onClickApprove={() => approve(element.id, element.name)}
+        onClickReprove={() => reprove(element.id)}
       />
-    </DetailContainer>
+    );
+  })
+
+  const approvedCandidates =
+    tripDetail.approved &&
+    tripDetail.approved.map((element) => {
+      return (
+        <>
+          <ul>
+            <li>{element.name}</li>
+          </ul>
+        </>
+      );
+    });
+
+  return (
+    <>
+      <DetailContainer>
+        <div className="wrapper">
+          <h1>Detalhes</h1>
+          <div>
+            <button onClick={goBack}>Voltar</button>
+          </div>
+        </div>
+        <Card
+          name={tripDetail.name}
+          planet={tripDetail.planet}
+          description={tripDetail.description}
+          date={tripDetail.date}
+          days={tripDetail.durationInDays}
+        />
+       {mappedCandidates}
+       {approvedCandidates}
+      </DetailContainer>
+    </>
   );
 }
 
