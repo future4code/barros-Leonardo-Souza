@@ -58,7 +58,7 @@ function Login() {
             pattern="^.{5,}"
             required
           />
-          <button onClick={goBack}>Voltar</button>
+          <button onClick={goBack} type="button">Voltar</button>
           <button>Entrar</button>
         </form>
       </div>

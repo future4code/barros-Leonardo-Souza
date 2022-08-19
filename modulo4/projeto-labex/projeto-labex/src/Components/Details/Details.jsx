@@ -6,12 +6,17 @@ import { DetailContainer } from "./style";
 import { BASE_URL, myHeaders } from "../../constants/constants";
 import axios from "axios";
 import { CandidatesCard } from "../CandidatesCard/CandidatesCard";
+import useRequestData from "../../hook/useRequestData";
 
 function Details() {
   const [ tripDetail, setTripDetail ] = useState({})
   const [ candidate, setCandidate ] = useState([])
+  const [ reload, setReload ] = useState(false)
+  const [ isLoading, setIsLoading ] = useState()
   const navigate = useNavigate();
   const params = useParams() 
+
+
 console.log(candidate);
   useProtectedPage();
 
@@ -21,15 +26,24 @@ console.log(candidate);
 
   useEffect(() => {
     getTripDetail()
-  },[])
+  },[reload])
+
+
+  //  const [data, isLoading, error, booleanState, setBooleanState] =
+  //    useRequestData(
+  //      `${BASE_URL}leonardo-souza-barros/trip/${params.id}`,
+  //      myHeaders
+  //    );
 
 
 
   const getTripDetail = () => {
+    setIsLoading(true)
     axios
     .get(`${BASE_URL}leonardo-souza-barros/trip/${params.id}`, myHeaders)
     .then((response) => {
       setTripDetail(response.data.trip)
+      setIsLoading(false)
       console.log(tripDetail);
     })
     .catch((err) => {
@@ -50,6 +64,7 @@ console.log(candidate);
     .then((response) => {
       alert("usuário aprovado")
       localStorage.setItem("name", name);
+      setReload(!reload)
     })
     .catch((err) => {
       alert("Ops... Algo deu errado :/")
@@ -68,6 +83,7 @@ console.log(candidate);
         )
         .then((response) => {
           alert("usuário reprovado");
+          setReload(!reload);
         })
         .catch((err) => {
           alert("Ops... Algo deu errado :/");
@@ -111,15 +127,19 @@ console.log(candidate);
             <button onClick={goBack}>Voltar</button>
           </div>
         </div>
-        <Card
-          name={tripDetail.name}
-          planet={tripDetail.planet}
-          description={tripDetail.description}
-          date={tripDetail.date}
-          days={tripDetail.durationInDays}
-        />
-       {mappedCandidates}
-       {approvedCandidates}
+        
+        {isLoading && "Carregando..."}
+        {!isLoading && tripDetail && (
+          <Card
+            name={tripDetail.name}
+            planet={tripDetail.planet}
+            description={tripDetail.description}
+            date={tripDetail.date}
+            days={tripDetail.durationInDays}
+          />
+        )}
+        {mappedCandidates}
+        {approvedCandidates}
       </DetailContainer>
     </>
   );

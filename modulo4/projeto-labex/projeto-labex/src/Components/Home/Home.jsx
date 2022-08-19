@@ -2,19 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeDiv } from "./style";
 
-
-
 function Home() {
   const navigate = useNavigate();
-  const [ token, setToken ] = useState("")
-
-  // useEffect(() => {
-  //     const token = localStorage.getItem('token');
-  //     if (token) {
-  //       setToken(token);
-  //       };
-  //     }
-  // }[])
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const goToTripsList = () => {
     navigate("/trips");
@@ -24,17 +14,35 @@ function Home() {
     navigate("login");
   };
 
-  return (
-    <HomeDiv>
-      <div>
-        <h1>Labex</h1>
+  const goToAdminHome = () => {
+    navigate("/login/admin");
+  };
+
+  if (token) {
+    return (
+      <HomeDiv>
         <div>
-          <button onClick={goToTripsList}>Ver Viagens</button>
-          <button onClick={goToAdminLogin}>Área de Admin</button>
+          <h1>Labex</h1>
+          <div>
+            <button onClick={goToTripsList}>Ver Viagens</button>
+            <button onClick={goToAdminHome}>Área de Admin</button>
+          </div>
         </div>
-      </div>
-    </HomeDiv>
-  );
+      </HomeDiv>
+    );
+  } else {
+        return (
+          <HomeDiv>
+            <div>
+              <h1>Labex</h1>
+              <div>
+                <button onClick={goToTripsList}>Ver Viagens</button>
+                <button onClick={goToAdminLogin}>Área de Admin</button>
+              </div>
+            </div>
+          </HomeDiv>
+        );
+  }
 }
 
 export default Home;
