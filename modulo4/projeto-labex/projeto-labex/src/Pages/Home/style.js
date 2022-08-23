@@ -33,4 +33,9 @@ export const HomeDiv = styled.div`
     cursor: pointer;
     font-size: 15px;
   }
+
+  button:hover {
+    transition: 0.2s ease-in-out;
+    opacity: 0.9;
+  }
 `;

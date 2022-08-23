@@ -12,7 +12,9 @@ function Details() {
   const [ tripDetail, setTripDetail ] = useState({})
   const [ reload, setReload ] = useState(false)
   const [ isLoading, setIsLoading ] = useState()
+
   const navigate = useNavigate();
+
   const params = useParams() 
 
   useProtectedPage();
@@ -21,6 +23,8 @@ function Details() {
     navigate(-1);
   };
 
+
+  // Reload every time boolean changes state
   useEffect(() => {
     getTripDetail()
   },[reload])
@@ -45,7 +49,7 @@ console.log(myHeaders);
 
   // decide candidate 
 
-  const approve = (id, name) => { 
+  const approve = (id) => { 
     const body = {
       approve: true,
     };
@@ -53,7 +57,6 @@ console.log(myHeaders);
     .put(`${BASE_URL}leonardo-souza-barros/trips/${params.id}/candidates/${id}/decide`, body, myHeaders)
     .then((response) => {
       alert("usuário aprovado")
-      localStorage.setItem("name", name);
       setReload(!reload)
     })
     .catch((err) => {
@@ -82,6 +85,9 @@ console.log(myHeaders);
 
 
 
+
+    // List of candidates
+
   const mappedCandidates = tripDetail.candidates && tripDetail.candidates.map((element) => {
     return (
       <CandidatesCard
@@ -95,6 +101,8 @@ console.log(myHeaders);
       />
     );
   })
+
+  // List of approved candidates
 
   const approvedCandidates =
     tripDetail.approved &&

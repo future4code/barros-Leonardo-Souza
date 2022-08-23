@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AdminContainer = styled.div `
+export const AdminContainer = styled.div`
     display: flex;
     flex-direction: column;
     font-family: "Poppins";
@@ -33,7 +33,12 @@ export const AdminContainer = styled.div `
         font-size: 20px;
         cursor: pointer;
     }
-`
+
+    div button:hover {
+        transition: 0.2s;
+        opacity: 0.9;
+    }
+`;
 
 export const TripContainer = styled.div `
     display: flex;

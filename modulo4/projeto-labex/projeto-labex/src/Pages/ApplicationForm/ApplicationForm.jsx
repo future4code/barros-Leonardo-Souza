@@ -74,10 +74,17 @@ function ApplicationForm() {
       <div>
         <h1>Inscreva-se para uma viagem</h1>
         <form action="" onSubmit={applyToTrip}>
-          <select name="" id="key" value={selectedId} onChange={handleInputSelectedId}>
+          <label htmlFor="trip">Escolha uma viagem:</label>
+          <select
+            id="trip"
+            name="trip"
+            value={selectedId}
+            onChange={handleInputSelectedId}
+          >
             <option value="">Selecione uma viagem</option>
             {listTripnames}
           </select>
+          <label htmlFor="name">Nome:</label>
           <input
             id="name"
             name="name"
@@ -88,9 +95,10 @@ function ApplicationForm() {
             required
             pattern="[a-z\s]+$"
           />
+          <label htmlFor="age">Idade:</label>
           <input
             id="age"
-            name="age"          
+            name="age"
             type="number"
             placeholder="Idade"
             min={18}
@@ -99,24 +107,27 @@ function ApplicationForm() {
             required
             pattern="[0-9]+$"
           />
+          <label htmlFor="applicationText">Texto de candidatura:</label>
           <input
             id="applicationText"
-            name="applicationText"         
+            name="applicationText"
             type="text"
             placeholder="Texto de Candidatura"
             value={form.application}
             onChange={onChange}
             required
           />
+          <label htmlFor="profession">Profissão:</label>
           <input
             id="profession"
-            name="profession"          
+            name="profession"
             type="text"
             placeholder="Profissão"
             value={form.occupation}
             onChange={onChange}
             required
           />
+          <label htmlFor="country">Nacionalidade:</label>
           <select
             id="country"
             name="country"
@@ -304,10 +315,10 @@ function ApplicationForm() {
             <option value="Zâmbia">Zâmbia</option>
             <option value="Zimbábue">Zimbábue</option>
           </select>
-        <div className="button-div">
-          <button onClick={goBack}>Voltar</button>
-          <button onClick={applyToTrip}>Enviar</button>
-        </div>
+          <div className="button-div">
+            <button onClick={goBack}>Voltar</button>
+            <button onClick={applyToTrip}>Enviar</button>
+          </div>
         </form>
       </div>
     </ApplicationDiv>

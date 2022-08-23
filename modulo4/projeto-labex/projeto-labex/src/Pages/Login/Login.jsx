@@ -38,6 +38,7 @@ function Login() {
       <div>
         <h1>Login</h1>
         <form onSubmit={doLogin}>
+          <label htmlFor="e-mail">Email</label>
           <input
             id="email"
             name="email"
@@ -48,6 +49,7 @@ function Login() {
             pattern="^[a-zA-Z0-0._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
             required
           />
+          <label htmlFor="password">Senha</label>
           <input
             id="password"
             name="password"
@@ -58,7 +60,9 @@ function Login() {
             pattern="^.{5,}"
             required
           />
-          <button onClick={goBack} type="button">Voltar</button>
+          <button onClick={goBack} type="button">
+            Voltar
+          </button>
           <button>Entrar</button>
         </form>
       </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../Constants/constants";
+import { BASE_URL, myHeaders } from "../../Constants/constants";
 import { useForm } from "../../Hooks/useForm";
 import { useProtectedPage } from "../../Hooks/useProtectedPage";
 import { CreateVoyageContainer } from "./style";
@@ -16,13 +16,13 @@ function CreateVoyage() {
     description: "",
     durationInDays: "",
   });
-  console.log(form);
 
+
+  // get current date so user select always a future date
   const date = new Date()
   const currentDate = date.toLocaleDateString()
-  console.log(date.toLocaleDateString());
 
-  //tratar data 
+  // process date to match pattern requirements
   function formatDate(date) {
     let day = date.split("/")[0];
     let month = date.split("/")[1];
@@ -31,14 +31,6 @@ function CreateVoyage() {
     return year + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2)
     
   }
-
-  console.log(formatDate(currentDate));
-
-  const myHeaders = {
-    headers: {
-      auth: localStorage.getItem("token"),
-    },
-  };
 
   const createTrip = (e) => {
     e.preventDefault()
@@ -63,6 +55,7 @@ function CreateVoyage() {
       <div>
         <h1>Criar Viagem</h1>
         <form onSubmit={createTrip}>
+          <label htmlFor="name">Nome:</label>
           <input
             id="name"
             name="name"
@@ -71,6 +64,7 @@ function CreateVoyage() {
             value={form.name}
             onChange={onChange}
           />
+          <label htmlFor="planet">Escolha um planeta:</label>
           <select
             id="planet"
             name="planet"
@@ -102,6 +96,7 @@ function CreateVoyage() {
               Plutão
             </option>
           </select>
+          <label htmlFor="date">Escolha uma data:</label>
           <input
             type="date"
             min={formatDate(currentDate)}
@@ -112,6 +107,7 @@ function CreateVoyage() {
             // pattern="[0-9]{2}\/[0-9]{2}\/[0-9]{4}$"
             // pattern= "min={date}"
           />
+          <label htmlFor="description">Descrição:</label>
           <input
             type="text"
             placeholder="Descrição"
@@ -120,6 +116,7 @@ function CreateVoyage() {
             value={form.description}
             onChange={onChange}
           />
+          <label htmlFor="durationInDays">Duração em dias:</label>
           <input
             type="number"
             placeholder="Duração em dias"
@@ -128,10 +125,12 @@ function CreateVoyage() {
             value={form.durationInDays}
             onChange={onChange}
           />
-        <div className="button-div">
-          <button onClick={goBack} type="button">Voltar</button>
-          <button>Criar</button>
-        </div>
+          <div className="button-div">
+            <button onClick={goBack} type="button">
+              Voltar
+            </button>
+            <button>Criar</button>
+          </div>
         </form>
       </div>
     </CreateVoyageContainer>

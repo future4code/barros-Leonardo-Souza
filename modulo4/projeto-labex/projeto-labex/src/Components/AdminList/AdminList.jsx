@@ -1,6 +1,7 @@
 import React from "react";
 import { AdminListContainer } from "./style";
 
+
 export function AdminList(props) {
 
 
@@ -9,7 +10,9 @@ export function AdminList(props) {
         <button className="button" onClick={props.onClickDetails}>
           <p>{props.name}</p>
         </button>
-          <button onClick={props.onClickDelete}>X</button>
+        <button onClick={props.onClickDelete}>
+          X
+        </button>
       </AdminListContainer>
     );
     

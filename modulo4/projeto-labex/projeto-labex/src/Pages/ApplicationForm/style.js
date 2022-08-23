@@ -1,54 +1,60 @@
 import styled from 'styled-components'
 
-export const ApplicationDiv = styled.div `
-    margin: 0 auto;
+export const ApplicationDiv = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+  margin-top: 50px;
+
+  h1 {
+    color: #5f5f5f;
+  }
+
+  div {
+    margin: auto;
+  }
+
+  form {
     display: flex;
     flex-direction: column;
-    font-family: "Poppins";
-    margin-top: 50px;
+    width: 100%;
+    margin: 10px 0px;
+  }
 
-    h1 {
-        color: #5f5f5f;
-    }
+  form select {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 15px 0px;
+  }
 
-    div {
-        margin: auto;
-    }
+  form label {
+    font-size: 20px;
+    color: #5f5f5f;
+    font-weight: 500;
+  }
 
-    form { 
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 10px 0px;
-    }
+  form input {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 15px 0px;
+  }
 
-    form select {
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin: 15px 0px;
-    }
+  form .button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
-    form input {
-        padding: 10px 20px;
-        border-radius: 10px;
-        margin: 15px 0px;
-    }
-
-    form .button-div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .button-div button {
-        margin-right:25px;
-        margin-left: 25px;
-        border: none;
-        padding: 15px 60px;
-        border-radius: 10px;
-        background-color: #5f5f5f;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-    }
-`
+  .button-div button {
+    margin-right: 25px;
+    margin-left: 25px;
+    border: none;
+    padding: 15px 60px;
+    border-radius: 10px;
+    background-color: #5f5f5f;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+`;

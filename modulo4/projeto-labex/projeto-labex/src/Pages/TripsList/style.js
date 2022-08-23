@@ -32,6 +32,11 @@ export const TripsContainer = styled.div `
         font-size: 15px;
     }
 
+    div button:hover {
+        transition: 0.2s ease-in-out;
+        opacity: 0.9;
+    }
+
     h1{
         align-self: center;
         font-family: "Poppins";

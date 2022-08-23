@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DetailContainer = styled.div `
+export const DetailContainer = styled.div`
     display: flex;
     flex-direction: column;
     font-family: "Poppins";
@@ -30,8 +30,13 @@ export const DetailContainer = styled.div `
         font-size: 20px;
         cursor: pointer;
     }
+
+    div button:hover {
+      transition: 0.2s ease-in-out;
+      opacity: 0.9;
+    }
     
-`
+`;
 
 export const ApprovedContainer = styled.div`
   min-height: 180px;

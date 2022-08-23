@@ -11,11 +11,10 @@ import axios from "axios";
 function Admin() {
   const navigate = useNavigate();
 
-
   useProtectedPage();
-  useEffect(()=>{
 
-  })
+
+  // information from api / boolean to render loading if its true / error log / boolean to load list again on every update
   const [data, isLoading, error, booleanState, setBooleanState] = useRequestData(
     `${BASE_URL}leonardo-souza-barros/trips`
   );
@@ -43,7 +42,8 @@ function Admin() {
     }
   }
   
-
+  // List of existing trips
+  
   const tripList =
     data &&
     data.trips &&

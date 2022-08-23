@@ -23,6 +23,12 @@ export const LoginContainer = styled.div `
         flex-direction: column;
     }
 
+    form label {
+        font-size: 20px;
+        color: #5f5f5f;
+        font-weight: 500;
+    }
+
     form input {
         padding: 10px 20px;
         border-radius: 10px;
