@@ -66,10 +66,6 @@ function Admin() {
     navigate("/login/admin/create-voyage");
   };
 
-  const goToDetails = () => {
-    navigate("/login/admin/details");
-  };
-
   const goToLogin = () => {
     localStorage.clear()
     navigate("/login");

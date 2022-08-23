@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProtectedPage } from "../../hook/useProtectedPage";
 import Card from "../Card/Card";
-import { DetailContainer } from "./style";
+import { ApprovedContainer, DetailContainer } from "./style";
 import { BASE_URL, myHeaders } from "../../constants/constants";
 import axios from "axios";
 import { CandidatesCard } from "../CandidatesCard/CandidatesCard";
@@ -10,14 +10,11 @@ import useRequestData from "../../hook/useRequestData";
 
 function Details() {
   const [ tripDetail, setTripDetail ] = useState({})
-  const [ candidate, setCandidate ] = useState([])
   const [ reload, setReload ] = useState(false)
   const [ isLoading, setIsLoading ] = useState()
   const navigate = useNavigate();
   const params = useParams() 
 
-
-console.log(candidate);
   useProtectedPage();
 
   const goBack = () => {
@@ -28,14 +25,7 @@ console.log(candidate);
     getTripDetail()
   },[reload])
 
-
-  //  const [data, isLoading, error, booleanState, setBooleanState] =
-  //    useRequestData(
-  //      `${BASE_URL}leonardo-souza-barros/trip/${params.id}`,
-  //      myHeaders
-  //    );
-
-
+console.log(myHeaders);
 
   const getTripDetail = () => {
     setIsLoading(true)
@@ -48,6 +38,7 @@ console.log(candidate);
     })
     .catch((err) => {
       alert("Ops... algo deu errado")
+      console.log(err.response);
     })
   }
 
@@ -90,7 +81,7 @@ console.log(candidate);
         });
     };
 
-  // setCandidate(localStorage.getItem("name"))
+
 
   const mappedCandidates = tripDetail.candidates && tripDetail.candidates.map((element) => {
     return (
@@ -110,11 +101,24 @@ console.log(candidate);
     tripDetail.approved &&
     tripDetail.approved.map((element) => {
       return (
-        <>
-          <ul>
-            <li>{element.name}</li>
-          </ul>
-        </>
+        <ApprovedContainer>
+          <div>
+            <h5>Nome: </h5>
+            <p>{element.name}</p>
+          </div>
+          <div>
+            <h5>Profissão: </h5>
+            <p>{element.profession}</p>
+          </div>
+          <div>
+            <h5>Idade: </h5>
+            <p>{element.age}</p>
+          </div>
+          <div>
+            <h5>País: </h5>
+            <p>{element.country}</p>
+          </div>
+        </ApprovedContainer>
       );
     });
 
@@ -126,9 +130,9 @@ console.log(candidate);
           <div>
             <button onClick={goBack}>Voltar</button>
           </div>
+          <h1>{tripDetail.name}</h1>
         </div>
-        
-        {isLoading && "Carregando..."}
+        <div>{isLoading && "Carregando..."}</div>
         {!isLoading && tripDetail && (
           <Card
             name={tripDetail.name}
@@ -138,8 +142,15 @@ console.log(candidate);
             days={tripDetail.durationInDays}
           />
         )}
+        <div>
+          <h1>Candidatos</h1>
+          {!mappedCandidates && "Carregando..."}
+        </div>
         {mappedCandidates}
-        {approvedCandidates}
+        <div>
+          <h1>Candidatos aprovados</h1>
+          {approvedCandidates}
+        </div>
       </DetailContainer>
     </>
   );
