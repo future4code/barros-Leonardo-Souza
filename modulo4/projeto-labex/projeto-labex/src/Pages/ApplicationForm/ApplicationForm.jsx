@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants/constants";
-import useRequestData from "../../hook/useRequestData";
+import { BASE_URL } from "../../Constants/constants";
+import useRequestData from "../../Hooks/useRequestData";
 import { ApplicationDiv } from "./style";
 import axios from "axios";
-import { useForm } from "../../hook/useForm";
+import { useForm } from "../../Hooks/useForm";
 
 function ApplicationForm() {
   const [selectedId, setSelectedId] =useState("")
@@ -75,6 +75,7 @@ function ApplicationForm() {
         <h1>Inscreva-se para uma viagem</h1>
         <form action="" onSubmit={applyToTrip}>
           <select name="" id="key" value={selectedId} onChange={handleInputSelectedId}>
+            <option value="">Selecione uma viagem</option>
             {listTripnames}
           </select>
           <input

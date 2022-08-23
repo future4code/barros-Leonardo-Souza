@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "../../hook/useForm";
+import { useForm } from "../../Hooks/useForm";
 import { LoginContainer } from "./style";
-import { BASE_URL } from "../../constants/constants";
+import { BASE_URL } from "../../Constants/constants";
 
 function Login() {
   const navigate = useNavigate();

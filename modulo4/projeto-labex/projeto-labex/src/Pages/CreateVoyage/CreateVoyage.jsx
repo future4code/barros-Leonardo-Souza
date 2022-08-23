@@ -1,9 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants/constants";
-import { useForm } from "../../hook/useForm";
-import { useProtectedPage } from "../../hook/useProtectedPage";
+import { BASE_URL } from "../../Constants/constants";
+import { useForm } from "../../Hooks/useForm";
+import { useProtectedPage } from "../../Hooks/useProtectedPage";
 import { CreateVoyageContainer } from "./style";
 
 function CreateVoyage() {
@@ -11,7 +11,7 @@ function CreateVoyage() {
   useProtectedPage()
   const [form, onChange] = useForm({
     name: "",
-    planet: "",
+    planet: "Mercúrio",
     date: "",
     description: "",
     durationInDays: "",

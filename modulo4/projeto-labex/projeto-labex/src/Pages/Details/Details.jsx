@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProtectedPage } from "../../hook/useProtectedPage";
-import Card from "../Card/Card";
+import { useProtectedPage } from "../../Hooks/useProtectedPage";
+import Card from "../../Components/Card/Card";
 import { ApprovedContainer, DetailContainer } from "./style";
-import { BASE_URL, myHeaders } from "../../constants/constants";
+import { BASE_URL, myHeaders } from "../../Constants/constants";
 import axios from "axios";
-import { CandidatesCard } from "../CandidatesCard/CandidatesCard";
-import useRequestData from "../../hook/useRequestData";
+import { CandidatesCard } from "../../Components/CandidatesCard/CandidatesCard";
+
 
 function Details() {
   const [ tripDetail, setTripDetail ] = useState({})
@@ -37,7 +37,6 @@ console.log(myHeaders);
       console.log(tripDetail);
     })
     .catch((err) => {
-      alert("Ops... algo deu errado")
       console.log(err.response);
     })
   }

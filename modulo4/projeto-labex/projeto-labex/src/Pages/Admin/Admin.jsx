@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useProtectedPage } from "../../hook/useProtectedPage";
+import { useProtectedPage } from "../../Hooks/useProtectedPage";
 import { AdminContainer, TripContainer } from "./style";
-import useRequestData from "../../hook/useRequestData";
-import { BASE_URL, myHeaders } from "../../constants/constants";
-import { AdminList } from "../AdminList/AdminList";
+import useRequestData from "../../Hooks/useRequestData";
+import { BASE_URL, myHeaders } from "../../Constants/constants";
+import { AdminList } from "../../Components/AdminList/AdminList";
 import axios from "axios";
 
 

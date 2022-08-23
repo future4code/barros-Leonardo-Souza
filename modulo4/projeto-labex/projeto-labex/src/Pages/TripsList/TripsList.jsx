@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants/constants";
-import useRequestData from "../../hook/useRequestData";
-import Card from "../Card/Card";
+import { BASE_URL } from "../../Constants/constants";
+import useRequestData from "../../Hooks/useRequestData";
+import Card from "../../Components/Card/Card";
 import { TripsContainer } from "./style";
 
 function TripsList() {
