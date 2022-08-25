@@ -5,6 +5,8 @@ export const HomeDiv = styled.div`
   flex-direction: column;
   font-family: "Poppins";
   height: 100vh;
+  align-items: center;
+  justify-content: center;
 
   div {
     margin: 0 auto;
