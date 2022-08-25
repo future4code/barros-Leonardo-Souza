@@ -8,7 +8,7 @@ export const ApplicationDiv = styled.div`
   margin-top: 50px;
 
   h1 {
-    color: #5f5f5f;
+    color: #cac7a6;
   }
 
   div {
@@ -30,7 +30,7 @@ export const ApplicationDiv = styled.div`
 
   form label {
     font-size: 20px;
-    color: #5f5f5f;
+    color: #cac7a6;
     font-weight: 500;
   }
 
@@ -52,9 +52,10 @@ export const ApplicationDiv = styled.div`
     border: none;
     padding: 15px 60px;
     border-radius: 10px;
-    background-color: #5f5f5f;
-    color: white;
+    background-color: #cac7a6;
+    color: #0f020d;
     font-size: 20px;
     cursor: pointer;
+    font-weight: 600;
   }
 `;

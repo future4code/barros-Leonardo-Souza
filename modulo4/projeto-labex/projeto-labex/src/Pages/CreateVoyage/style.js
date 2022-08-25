@@ -8,7 +8,7 @@ export const CreateVoyageContainer = styled.div`
   margin-top: 50px;
 
   h1 {
-    color: #5f5f5f;
+    color: #cac7a6;
     align-self: center;
   }
 
@@ -32,7 +32,7 @@ export const CreateVoyageContainer = styled.div`
 
   form label {
     font-size: 20px;
-    color: #5f5f5f;
+    color: #cac7a6;
     font-weight: 500;
   }
 
@@ -42,25 +42,27 @@ export const CreateVoyageContainer = styled.div`
     margin: 15px 0px;
   }
 
-  .button-div {
+  form .button-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
 
   .button-div button {
+    margin-right: 25px;
+    margin-left: 25px;
     border: none;
-    padding: 15px 40px;
+    padding: 15px 60px;
     border-radius: 10px;
-    background-color: #5f5f5f;
-    color: white;
+    background-color: #cac7a6;
+    color: #0f020d;
     font-size: 20px;
     cursor: pointer;
-    margin: 0px 40px;
+    font-weight: 600;
   }
 
-    .button-div button:hover{
-        transition: 0.2s ease-in-out;
-        opacity: 0.9;
-    }
+  .button-div button:hover {
+    transition: 0.2s ease-in-out;
+    opacity: 0.9;
+  }
 `;

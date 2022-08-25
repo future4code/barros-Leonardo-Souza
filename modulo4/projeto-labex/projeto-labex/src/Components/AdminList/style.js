@@ -8,9 +8,7 @@ export const AdminListContainer = styled.div`
   box-shadow: 5px 5px 5px gray;
   margin-top: 30px;
 
-
   .button {
-
     padding: 0 30px;
     width: 100%;
     height: 100%;
@@ -27,6 +25,7 @@ export const AdminListContainer = styled.div`
     cursor: pointer;
     border: none;
     padding: 15px 30px;
+    font-weight: 600;
   }
 
   button:nth-child(2) {
@@ -38,8 +37,8 @@ export const AdminListContainer = styled.div`
 
   button:nth-child(1):hover {
     transition: 0.3s ease-in-out;
-    background-color: #5f5f5f;
-    color: white;
+    background-color: #cac7a6;
+    color: #0f020d;
   }
 
   button:nth-child(2):hover {

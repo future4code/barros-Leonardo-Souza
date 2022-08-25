@@ -6,7 +6,6 @@ export const HomeDiv = styled.div`
   font-family: "Poppins";
   height: 100vh;
 
-
   div {
     margin: 0 auto;
     display: flex;
@@ -15,7 +14,7 @@ export const HomeDiv = styled.div`
 
   div h1 {
     font-size: 50px;
-    color: #5f5f5f;
+    color: #cac7a6;
   }
 
   div div {
@@ -27,11 +26,12 @@ export const HomeDiv = styled.div`
     padding: 15px 25px;
     margin: 15px 0px;
     border: none;
-    background-color: #5f5f5f;
-    color: white;
+    background-color: #cac7a6;
+    color: #0f020d;
     border-radius: 10px;
     cursor: pointer;
     font-size: 15px;
+    font-weight: 600;
   }
 
   button:hover {

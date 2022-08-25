@@ -8,6 +8,9 @@ export const CardContainer = styled.section`
   margin: 0;
   padding: 0;
   align-self: center;
+  background-color: #cac7a6;
+  margin-bottom: 50px;
+  padding: 0 20px;
 
   div {
     display: flex;
@@ -20,7 +23,11 @@ export const CardContainer = styled.section`
   div h5 {
     margin-right: 5px;
     margin-left: 15px;
-    color: gray;
+    color: #807675;
     margin-bottom: 0;
+  }
+
+  div p {
+    color: black;
   }
 `;

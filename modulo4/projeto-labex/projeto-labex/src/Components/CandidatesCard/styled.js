@@ -8,6 +8,8 @@ export const CandidatesContainer = styled.div`
   margin: 0;
   padding: 0;
   align-self: center;
+  background-color: #cac7a6;
+  margin-bottom: 50px;
 
   div {
     display: flex;
@@ -24,7 +26,7 @@ export const CandidatesContainer = styled.div`
     margin-bottom: 0;
   }
 
-  .button{
+  .button {
     display: flex;
     align-items: center;
     justify-content: space-between;

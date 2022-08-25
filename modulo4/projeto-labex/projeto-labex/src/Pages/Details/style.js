@@ -1,41 +1,41 @@
 import styled from "styled-components";
 
 export const DetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins";
+
+  .wrapper {
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: #cac7a6;
+  }
+
+  div {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    font-family: "Poppins";
+    justify-content: center;
+    color: #cac7a6;
+  }
 
+  div button {
+    border: none;
+    padding: 15px 60px;
+    border-radius: 10px;
+    background-color: #cac7a6;
+    color: #0f020d;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 600;
+  }
 
-    .wrapper {
-        margin: 0 auto;
-    }
-
-    h1 {
-        color: gray;
-    }
-
-    div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    div button {
-        border: none;
-        padding: 15px 60px;
-        border-radius: 10px;
-        background-color: #5f5f5f;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-    div button:hover {
-      transition: 0.2s ease-in-out;
-      opacity: 0.9;
-    }
-    
+  div button:hover {
+    transition: 0.2s ease-in-out;
+    opacity: 0.9;
+  }
 `;
 
 export const ApprovedContainer = styled.div`
@@ -46,6 +46,8 @@ export const ApprovedContainer = styled.div`
   margin: 0;
   padding: 0;
   align-self: center;
+  background-color: #cac7a6;
+  margin-bottom: 50px;
 
   div {
     display: flex;
@@ -60,5 +62,9 @@ export const ApprovedContainer = styled.div`
     margin-left: 15px;
     color: gray;
     margin-bottom: 0;
+  }
+
+  div p {
+    color: #0f020d;
   }
 `;
