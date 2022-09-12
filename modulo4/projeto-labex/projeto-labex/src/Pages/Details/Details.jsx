@@ -68,7 +68,7 @@ console.log(myHeaders);
       const body = {
         approve: false,
       };
-      axios
+      BASE_URL && myHeaders && body && axios
         .put(
           `${BASE_URL}leonardo-souza-barros/trips/${params.id}/candidates/${id}/decide`,
           body,
