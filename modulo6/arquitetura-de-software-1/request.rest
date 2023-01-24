@@ -1,0 +1,15 @@
+# GET http://localhost:3003/
+
+
+//Add new user
+GET http://localhost:3003/users
+###
+
+POST http://localhost:3003/user 
+Content-Type: application/json
+
+{
+    "name":"Dara",
+    "email":"dara@gmail.com",
+    "password": "dara123"
+}
