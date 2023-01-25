@@ -1,0 +1,31 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "teste",
+    "email": "email@email.com",
+    "password": "23432535"
+}
+
+###
+
+GET http://localhost:3003/user/all
+
+
+###
+
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title":"Black Panther: Wakanda Forever",
+    "description":"The people of Wakanda fight to protect their home from intervening world powers as they mourn the death of King T'Challa. Queen Ramonda, Shuri, M'Baku, Okoye and the Dora Milaje fight to protect the kingdom of Wakanda from intervening world powers in the wake of King T'Challa's death.",
+    "durationInMinutes":161,
+    "yearOfRelease":2022,
+}
+
+###
+
+GET http://localhost:3003/movie/all
+
+
