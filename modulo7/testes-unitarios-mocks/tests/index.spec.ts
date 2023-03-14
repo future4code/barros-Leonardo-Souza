@@ -107,7 +107,10 @@ describe("test performAttack with mocks case invalid", () => {
     
         performAttack(defender, attacker, caseInvalid)
     
+        expect(defender.life).toEqual(1500)
         expect(caseInvalid).toHaveReturned()
+        expect(caseInvalid).toHaveBeenCalled()
+        expect(caseInvalid).toHaveBeenCalledTimes(2)
   
 
       });
