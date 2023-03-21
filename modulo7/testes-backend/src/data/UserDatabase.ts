@@ -19,4 +19,17 @@ export class UserDatabase extends BaseDatabase implements UserRepository {
         }
     }
     
+    checkIfExists = async(id: string): Promise<number | undefined> => {
+        try {
+            let result:any = await BaseDatabase.connection
+            .select()
+            .where({id})
+            .from(UserDatabase.TABLE_NAME)
+
+            return result.length
+        } catch (error:any) {
+            throw new Error(error.message);
+            
+        }
+    }
 }

@@ -16,9 +16,8 @@ export class UserBusiness {
                 }
                 let id: AuthenticationData = this.tokenGenerator.tokenData(token)
                 let userId: any = await this.UserDatabase.checkIfExists(id.id)
-                userId = JSON.parse(JSON.stringify(userId))
     
-                if (userId[0].id !== id.id) {
+                if (userId < 1) {
                     throw new Error("Token is invalid");
                 }
                 return await this.UserDatabase.getById(id.id)
