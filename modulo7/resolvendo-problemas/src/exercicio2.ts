@@ -22,3 +22,5 @@ function compressedStr(str:string) {
 }
 
 console.log(compressedStr("aabcccccaaa"));
+
+//
